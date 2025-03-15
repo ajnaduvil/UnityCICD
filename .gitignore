@@ -76,3 +76,7 @@ crashlytics-build.properties
 # Ignore temporaries from GameCI
 /[Aa]rtifacts/
 /[Cc]odeCoverage/
+
+#ignore all files in keystore directory
+/[Aa]ssets/[Kk]eystore/*
+Assets/keystore.meta
