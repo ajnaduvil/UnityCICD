@@ -64,45 +64,16 @@ mkdir -p .github/workflows
 
 ## 2. GitHub Actions Environment Setup
 
-### 2.1 Create Unity Activation Workflow
+### 2.1 Unity License Activation
 
-Create a file named `.github/workflows/activation.yml`:
+For Unity license activation, follow the official GameCI documentation:
+[Unity License Activation Guide](https://game.ci/docs/github/activation)
 
-```yaml
-name: Acquire activation file
-on:
-  workflow_dispatch: {}
-jobs:
-  activation:
-    name: Request manual activation file 🔑
-    runs-on: ubuntu-latest
-    steps:
-      # Request manual activation file
-      - name: Request manual activation file
-        id: getManualLicenseFile
-        uses: game-ci/unity-request-activation-file@v2
-        with:
-          unityVersion: 2022.3.15f1 # Replace with your Unity version
+The guide covers different activation methods based on your license type (Personal, Professional, or License Server).
 
-      # Upload artifact (Unity_v20XX.X.XXXX.alf)
-      - name: Upload activation file
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ steps.getManualLicenseFile.outputs.activationFile }}
-          path: ${{ steps.getManualLicenseFile.outputs.activationFile }}
-```
+**Important**: After completing the activation process, you should have a `.ulf` (Unity License File) ready to use in the next step. This file contains your Unity license information and is required for the GitHub Actions workflow.
 
-### 2.2 Run Activation Workflow and Get License
-
-1. Push the activation workflow to GitHub
-2. Go to your GitHub repository's Actions tab
-3. Run the "Acquire activation file" workflow
-4. Download the Unity_vXXXX.X.XXf.alf file
-5. Visit [Unity License Activation](https://license.unity3d.com/manual) and upload the .alf file
-6. Sign in with your Unity account
-7. Download the Unity license file (.ulf)
-
-### 2.3 Configure GitHub Secrets
+### 2.2 Configure GitHub Secrets
 
 In your GitHub repository, navigate to Settings > Secrets and variables > Actions and add the following secrets:
 
