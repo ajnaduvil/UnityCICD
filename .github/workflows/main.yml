@@ -106,7 +106,7 @@ jobs:
         with:
           unityVersion: ${{ needs.setup.outputs.unityVersion }}
           targetPlatform: Android
-          androidAppBundle: true
+          allowDirtyBuild: true
           androidKeystoreName: user.keystore
           androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
           androidKeystorePass: ${{ secrets.ANDROID_KEYSTORE_PASS }}
@@ -155,6 +155,7 @@ jobs:
         with:
           unityVersion: ${{ needs.setup.outputs.unityVersion }}
           targetPlatform: iOS
+          allowDirtyBuild: true
           customParameters: -buildConfiguration ${{ github.event.inputs.buildConfiguration }}
           
       - name: Upload iOS Build
