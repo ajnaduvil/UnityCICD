@@ -16,7 +16,7 @@ on:
       targetPlatforms:
         description: 'Target platforms to build (comma-separated)'
         required: true
-        default: 'Android,iOS'
+        default: 'Android'
         type: string
       buildConfiguration:
         description: 'Build configuration'
